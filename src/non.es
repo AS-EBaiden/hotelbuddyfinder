@@ -1,4 +1,4 @@
-.App {
+  .App {
   text-align: center;
 }
 
@@ -15,7 +15,6 @@ h1,h2,h3 {
   color: #394447
 }
 p {
-  /* color: #828b8a; */
   color: #3C474A
 }
 
@@ -34,7 +33,7 @@ header {
   margin: 20px auto;
 }
 
-.profile-input {
+.profile-input { 
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
@@ -68,19 +67,7 @@ h5{
 }
 
 
-
 .profile-card
 {
   margin: 20px
-}
-
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
