@@ -185,22 +185,12 @@ export default function InputInfo() {
             name="first_name"
             value={inputValues2.first_name}
             onChange={changeHandler}
-            // onChange={(e) => (
-            //   //   e.preventDefault(),
-            //   setInputValues2(e.target.value),
-            //   console.log("girl why", e.target.value)
-            // )}
           />
           <input
             type="text"
             name="pronouns"
             value={inputValues2.pronouns}
             onChange={changeHandler}
-            // onChange={(e) => (
-            //   //   e.preventDefault(),
-            //   setInputValues2(e.target.value),
-            //   console.log("girl why", e.target.value)
-            // )}
           />
           <button type="submit">submit</button>
         </form>
@@ -208,7 +198,14 @@ export default function InputInfo() {
       put input results here
       {personInfo?.map((item) => (
         <div>
-          {item.first_name} ({item.pronouns})<div></div>
+          <div>
+            {item.first_name} ({item.pronouns})
+          </div>
+          <div>
+            {item.contact.map((stuff) => (
+              <span>🍌 {stuff}</span>
+            ))}
+          </div>
         </div>
       ))}
       {/* {console.log("person info", personInfo)} */}
