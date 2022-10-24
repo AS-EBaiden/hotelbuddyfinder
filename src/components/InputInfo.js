@@ -19,20 +19,13 @@ export default function InputInfo() {
   const [personInfo, setPersonInfo] = useState(users);
   const [countInputs, setCountInputs] = useState(1);
 
-  const [inputValues, setInputValues] = useState();
+  const [inputValues2, setInputValues2] = useState({
+    first_name: "",
+    last_name: "",
+    pronouns: "",
+    contact: [],
+  });
 
-  const [inputValues2, setInputValues2] = useState("");
-
-  // const inputfields = ["First Name", "Last Name", "Pronouns", "Contact"];
-
-  //   const inputfields = [
-  //     { first_name: "", last_name: "", pronouns: "", contact: [] },
-  //   ];
-
-  //   useEffect(()=>{
-  //     let count= 0;
-  //     personInfo.map()
-  //   })
   const addMore = (e) => {
     e.preventDefault();
     setCountInputs(countInputs + 1);
@@ -47,27 +40,21 @@ export default function InputInfo() {
     e.preventDefault();
     if (inputValues2 === "") return alert("task name is cool");
     console.log("person info", personInfo);
+    console.log("inputval", inputValues2);
     const newArr = personInfo.slice();
-    newArr.splice(0, 0, { first_name: inputValues2 });
+    //     newArr.splice(0, 0, { first_name: inputValues2 });
+    newArr.splice(0, 0, inputValues2);
+
     setPersonInfo(newArr);
     setInputValues2("");
   };
   const changeHandler = (e) => {
     e.preventDefault();
     // setInputValues([e.target.name]:e.target.value)
+    setInputValues2({ ...inputValues2, [e.target.name]: e.target.value });
   };
 
-  console.log(
-    "whats this",
-    Array(inputfields)[0][inputfields.length - 1].value.length,
-    Array.from(Array(inputfields)[0][inputfields.length - 1].value).length
-  );
-
-  console.log(
-    "users",
-    Array(inputfields)[0][inputfields.length - 1].value.length,
-    Array.from(users)
-  );
+  console.log("ponsole", inputValues2);
   return (
     <div style={{ minHeight: "40vh" }}>
       <section>Put your info here</section>
@@ -195,20 +182,36 @@ export default function InputInfo() {
         <form onSubmit={addPerson}>
           <input
             type="text"
+            name="first_name"
             value={inputValues2.first_name}
-            onChange={(e) => (
-              //   e.preventDefault(),
-              setInputValues2(e.target.value),
-              console.log("girl why", e.target.value)
-            )}
+            onChange={changeHandler}
+            // onChange={(e) => (
+            //   //   e.preventDefault(),
+            //   setInputValues2(e.target.value),
+            //   console.log("girl why", e.target.value)
+            // )}
+          />
+          <input
+            type="text"
+            name="pronouns"
+            value={inputValues2.pronouns}
+            onChange={changeHandler}
+            // onChange={(e) => (
+            //   //   e.preventDefault(),
+            //   setInputValues2(e.target.value),
+            //   console.log("girl why", e.target.value)
+            // )}
           />
           <button type="submit">submit</button>
         </form>
       </div>
       put input results here
-      <div>{inputValues2}</div>
-      {personInfo?.map((item) => item.first_name)}
-      {console.log("person info", personInfo)}
+      {personInfo?.map((item) => (
+        <div>
+          {item.first_name} ({item.pronouns})<div></div>
+        </div>
+      ))}
+      {/* {console.log("person info", personInfo)} */}
     </div>
   );
 }

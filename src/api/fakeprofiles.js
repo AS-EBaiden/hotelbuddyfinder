@@ -5,11 +5,9 @@ export const users = [
     img: "https://randomuser.me/api/portraits/women/91.jpg",
     type: "looking",
     contact: [
-      {
-        1: "https://twitter.com/Ebizzill",
-        2: "https://twitter.com/Ebizzill",
-        3: "https://twitter.com/Ebizzill",
-      },
+      "https://twitter.com/Ebizzill",
+      "https://twitter.com/Ebizzill",
+      "https://twitter.com/Ebizzill",
     ],
   },
   {
@@ -18,11 +16,9 @@ export const users = [
     img: "https://randomuser.me/api/portraits/women/91.jpg",
     type: "hosting",
     contact: [
-      {
-        1: "https://twitter.com/Ebizzill",
-        2: "https://twitter.com/Ebizzill",
-        3: "https://twitter.com/Ebizzill",
-      },
+      "https://twitter.com/Ebizzill",
+      "https://twitter.com/Ebizzill",
+      "https://twitter.com/Ebizzill",
     ],
   },
   {
@@ -31,11 +27,9 @@ export const users = [
     img: "https://randomuser.me/api/portraits/women/91.jpg",
     type: "looking",
     contact: [
-      {
-        1: "https://twitter.com/Ebizzill",
-        2: "https://twitter.com/Ebizzill",
-        3: "https://twitter.com/Ebizzill",
-      },
+      "https://twitter.com/Ebizzill",
+      "https://twitter.com/Ebizzill",
+      "https://twitter.com/Ebizzill",
     ],
   },
 ];
