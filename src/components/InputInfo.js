@@ -15,27 +15,36 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
 
   const addPerson = (e) => {
     e.preventDefault();
-    if (initialValues === "" || inputValue === "")
+
+    if (initialValues === "" || (!contactData.length > 0 && inputValue === ""))
       return alert("please make sure all fields are filled");
 
     const newArr = personInfo.slice();
-    console.log("selection option inside", selectOption);
 
     newArr.splice(0, 0, {
       ...initialValues,
       isHosting: selectOption,
-      contact: contactData,
+      contact:
+        contactData.length > 1 ? contactData : [...contactData, inputValue],
     });
 
     setPersonInfo(newArr);
-    console.log("its submitted");
+    setInitialValues({
+      first_name: "",
+      last_name: "",
+      pronouns: "",
+      isHosting: false,
+      contact: [],
+    });
+    setInputValue("");
   };
 
-  const addContact2 = (e) => {
+  const addContact = (e) => {
     e.preventDefault();
     if (inputValue === "")
       return alert("please dont forget to add a way to reach you");
     setContacData([...contactData, inputValue]);
+    setInputValue("");
   };
 
   const changeHandler = (e) => {
@@ -48,6 +57,7 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
     setInputValue(e.target.value);
   };
 
+  console.log("person", personInfo);
   return (
     <div style={{ minHeight: "40vh" }}>
       <section>Put your info here</section>
@@ -56,25 +66,43 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
           <div className="profile-input">
             {Object.keys(initialValues)?.map((r, i) => {
               return (
-                <div key={i} style={{ padding: "0 5%" }}>
+                <div
+                  key={i}
+                  style={{
+                    padding: r === "contact" ? "0px 0px 0px 5%" : "0 5%", //flex instead of grid https://stackoverflow.com/questions/63471747/how-to-make-the-last-items-in-my-css-grid-stretch-full-width-with-equal-spacing
+                  }}
+                >
                   {r === "contact" ? (
                     <div>
                       <label>{r}</label>
-                      <input
-                        value={inputValue}
-                        onChange={contactChangeHandler}
-                      />
 
-                      <button onClick={addContact2}>add more</button>
-
-                      {contactData?.map((item, j) => (
-                        <div key={j}>
-                          <div>{item}</div>
-                          <span>
-                            <button>🗑️</button>
-                          </span>
+                      <div
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns: " 5fr 1fr",
+                          gap: "60px",
+                          margin: "20px auto",
+                        }}
+                      >
+                        <div>
+                          <input
+                            value={inputValue}
+                            onChange={contactChangeHandler}
+                          />
                         </div>
-                      ))}
+
+                        <button onClick={addContact}>add more</button>
+                      </div>
+                      <div>
+                        {contactData?.map((item, j) => (
+                          <div key={j}>
+                            <div>{item}</div>
+                            <span>
+                              <button>🗑️</button>
+                            </span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   ) : r === "isHosting" ? (
                     <>
