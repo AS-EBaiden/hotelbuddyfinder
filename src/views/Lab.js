@@ -1,5 +1,4 @@
 import React from "react";
-import InputInfo from "../components/InputInfo";
 
 export default function Lab() {
   const code = `
@@ -22,6 +21,21 @@ export default function Lab() {
         <Item key={i} item={props.items[i]} />
       );
     }`;
+
+  const selectionOption = `
+
+    const Component =()=>{
+      const [optionSelectState, setSelectState]= useState(null);
+      
+      return(
+        <select onChange={(e) => setSelectState(e.target.value)}> //you probably want to convert the value to a Boolean
+      <option value={true}>hosting</option>
+      <option value={false}>looking</option>
+    </select>
+    )
+    }
+    
+    `;
 
   return (
     <div>
@@ -46,6 +60,18 @@ export default function Lab() {
             </blockquote>
           </div>
           <div>Reference: https://daveceddia.com/display-a-list-in-react/</div>
+        </article>
+
+        <article>
+          <h3>Option states</h3>
+          <time></time>
+          <div>
+            <blockquote>
+              <pre>{selectionOption}</pre>
+            </blockquote>
+          </div>
+
+          <div>https://codesandbox.io/s/select-3p3oe?file=/demo.js</div>
         </article>
       </section>
     </div>

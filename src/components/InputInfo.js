@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function InputInfo({ personInfo, setPersonInfo }) {
-  const [inputValues2, setInputValues2] = useState({
+  const [initialValues, setInitialValues] = useState({
     first_name: "",
     last_name: "",
     pronouns: "",
@@ -9,35 +9,43 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
     contact: [],
   });
 
-  const [inputVal3, setInputVal3] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [contactData, setContacData] = useState([]);
+  const [selectOption, setSelectOption] = useState(false);
 
   const addPerson = (e) => {
     e.preventDefault();
-    if (inputValues2 === "" || inputVal3 === "")
+    if (initialValues === "" || inputValue === "")
       return alert("please make sure all fields are filled");
 
     const newArr = personInfo.slice();
-    newArr.splice(0, 0, { ...inputValues2, contact: contactData });
+    console.log("selection option inside", selectOption);
+
+    newArr.splice(0, 0, {
+      ...initialValues,
+      isHosting: selectOption,
+      contact: contactData,
+    });
 
     setPersonInfo(newArr);
+    console.log("its submitted");
   };
 
   const addContact2 = (e) => {
     e.preventDefault();
-    if (inputVal3 === "")
-      return alert("please dont forget to add a contact info");
-    setContacData([...contactData, inputVal3]);
+    if (inputValue === "")
+      return alert("please dont forget to add a way to reach you");
+    setContacData([...contactData, inputValue]);
   };
 
   const changeHandler = (e) => {
     e.preventDefault();
-    setInputValues2({ ...inputValues2, [e.target.name]: e.target.value });
+    setInitialValues({ ...initialValues, [e.target.name]: e.target.value });
   };
 
   const contactChangeHandler = (e) => {
     e.preventDefault();
-    setInputVal3(e.target.value);
+    setInputValue(e.target.value);
   };
 
   return (
@@ -46,14 +54,14 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
       <section>
         <form onSubmit={addPerson}>
           <div className="profile-input">
-            {Object.keys(inputValues2)?.map((r, i) => {
+            {Object.keys(initialValues)?.map((r, i) => {
               return (
                 <div key={i} style={{ padding: "0 5%" }}>
                   {r === "contact" ? (
                     <div>
                       <label>{r}</label>
                       <input
-                        value={inputVal3}
+                        value={inputValue}
                         onChange={contactChangeHandler}
                       />
 
@@ -68,24 +76,17 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
                         </div>
                       ))}
                     </div>
-                  ) : // <>
-                  //   <label>{r}</label>
-                  //   <input
-                  //     type="text"
-                  //     name={r}
-                  //     value={inputValues2.r}
-                  //     onChange={changeHandler}
-                  //   />
-                  // </>
-                  r === "isHosting" ? (
+                  ) : r === "isHosting" ? (
                     <>
                       <label>Are You Hosting or Looking</label>
-                      <input
-                        type="text"
-                        name={r}
-                        value={inputValues2.r}
-                        onChange={changeHandler}
-                      />
+                      <select
+                        onChange={(e) =>
+                          setSelectOption(Boolean(e.target.value))
+                        }
+                      >
+                        <option value={false}>looking</option>
+                        <option value={true}>hosting</option>
+                      </select>
                     </>
                   ) : (
                     <>
@@ -93,7 +94,7 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
                       <input
                         type="text"
                         name={r}
-                        value={inputValues2.r}
+                        value={initialValues.r}
                         onChange={changeHandler}
                       />
                     </>

@@ -15,11 +15,13 @@ export default function Home({ personInfo }) {
               padding: "20px",
             }}
           >
-            <h2>{ppl.name}</h2>
+            <h2>{ppl.first_name}</h2>
             <h4>{ppl.pronouns}</h4>
+
+            <h4>{ppl.isHosting ? "hosting" : "looking"} </h4>
             <img
               src={ppl.img ?? "https://api.lorem.space/image/face?w=150&h=150"}
-              alt={ppl.name}
+              alt={ppl.first_name}
             />
             <h5>Contact</h5>
             <div style={{ display: "inline-flex" }}>
