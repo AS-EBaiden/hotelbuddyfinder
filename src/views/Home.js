@@ -11,7 +11,7 @@ export default function Home({ personInfo }) {
             style={{
               maxHeight: "600px",
               borderRadius: "10px",
-              background: ppl.type === "looking" ? "#AA839F" : "#F7EBF3",
+              background: ppl.isHosting === false ? "#AA839F" : "#F7EBF3",
               padding: "20px",
             }}
           >

@@ -3,7 +3,7 @@ export const users = [
     first_name: "Rhonda",
     pronouns: "She/Her/Hers",
     img: "https://randomuser.me/api/portraits/women/91.jpg",
-    type: "looking",
+    isHosting: false,
     contact: [
       "https://twitter.com/Ebizzill",
       "https://twitter.com/Ebizzill",
@@ -14,7 +14,7 @@ export const users = [
     first_name: "Jasmine",
     pronouns: "She/Her/Them",
     img: "https://randomuser.me/api/portraits/women/91.jpg",
-    type: "hosting",
+    isHosting: true,
     contact: [
       "https://twitter.com/Ebizzill",
       "https://twitter.com/Ebizzill",
@@ -25,7 +25,7 @@ export const users = [
     first_name: "Helene",
     pronouns: "She/Her/Hers",
     img: "https://randomuser.me/api/portraits/women/91.jpg",
-    type: "looking",
+    isHosting: false,
     contact: [
       "https://twitter.com/Ebizzill",
       "https://twitter.com/Ebizzill",
@@ -36,7 +36,7 @@ export const users = [
     first_name: "jolene",
     pronouns: "She/Her/Hers",
     img: "https://randomuser.me/api/portraits/women/91.jpg",
-    type: "looking",
+    isHosting: false,
     contact: [
       "https://twitter.com/Ebizzill",
       "https://twitter.com/Ebizzill",

@@ -5,6 +5,7 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
     first_name: "",
     last_name: "",
     pronouns: "",
+    isHosting: false,
     contact: [],
   });
 
@@ -67,6 +68,25 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
                         </div>
                       ))}
                     </div>
+                  ) : // <>
+                  //   <label>{r}</label>
+                  //   <input
+                  //     type="text"
+                  //     name={r}
+                  //     value={inputValues2.r}
+                  //     onChange={changeHandler}
+                  //   />
+                  // </>
+                  r === "isHosting" ? (
+                    <>
+                      <label>Are You Hosting or Looking</label>
+                      <input
+                        type="text"
+                        name={r}
+                        value={inputValues2.r}
+                        onChange={changeHandler}
+                      />
+                    </>
                   ) : (
                     <>
                       <label>{r}</label>
