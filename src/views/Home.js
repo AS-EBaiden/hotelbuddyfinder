@@ -1,11 +1,10 @@
 import React from "react";
-import { users } from "../api/fakeprofiles";
 
-export default function Home() {
+export default function Home({ personInfo }) {
   return (
     <div>
       <section className="profiles-container">
-        {users.map((ppl, i) => (
+        {personInfo.map((ppl, i) => (
           <article
             key={i}
             className="profile-card"
@@ -18,13 +17,16 @@ export default function Home() {
           >
             <h2>{ppl.name}</h2>
             <h4>{ppl.pronouns}</h4>
-            <img src={ppl.img} alt={ppl.name} />
+            <img
+              src={ppl.img ?? "https://api.lorem.space/image/face?w=150&h=150"}
+              alt={ppl.name}
+            />
             <h5>Contact</h5>
             <div style={{ display: "inline-flex" }}>
               <ul className="social-list">
-                <li>Twitter</li>
-                <li>Instagram</li>
-                <li>Email</li>
+                {ppl.contact.map((item, j) => (
+                  <li key={j}>🍌{item}</li>
+                ))}
               </ul>
             </div>
           </article>

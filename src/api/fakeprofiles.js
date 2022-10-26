@@ -32,4 +32,15 @@ export const users = [
       "https://twitter.com/Ebizzill",
     ],
   },
+  {
+    first_name: "jolene",
+    pronouns: "She/Her/Hers",
+    img: "https://randomuser.me/api/portraits/women/91.jpg",
+    type: "looking",
+    contact: [
+      "https://twitter.com/Ebizzill",
+      "https://twitter.com/Ebizzill",
+      "https://twitter.com/Ebizzill",
+    ],
+  },
 ];
