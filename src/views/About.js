@@ -6,7 +6,7 @@ export default function About() {
       <section>
         <h1>About</h1>
         <p>
-          Yo! Listen. This site is to help afrotech Attendees find roomates for
+          Yo! Listen. This site is to help Afrotech attendees find roomates for
           the entirety of the event.
         </p>
         <p>
