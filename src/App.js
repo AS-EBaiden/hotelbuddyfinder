@@ -6,6 +6,7 @@ import Lab from "./views/Lab";
 import { useState } from "react";
 import { users } from "./api/fakeprofiles";
 import About from "./views/About";
+import Matched from "./views/Matched";
 
 function App() {
   const [personInfo, setPersonInfo] = useState(users);
@@ -22,6 +23,13 @@ function App() {
             }
           />
           <Route path="/about" element={<About />} />
+          <Route
+            path="/matched"
+            element={
+              <Matched personInfo={personInfo} setPersonInfo={setPersonInfo} />
+            }
+          />
+
           <Route path="/lab" element={<Lab />} />
           <Route />
         </Routes>

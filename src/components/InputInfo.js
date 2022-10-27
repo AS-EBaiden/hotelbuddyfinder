@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function InputInfo({ personInfo, setPersonInfo }) {
   const [initialValues, setInitialValues] = useState({
     first_name: "",
-    last_name: "",
+    username: "",
     pronouns: "",
     isHosting: false,
     contact: [],
@@ -31,9 +31,10 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
     setPersonInfo(newArr);
     setInitialValues({
       first_name: "",
-      last_name: "",
+      username: "",
       pronouns: "",
       isHosting: false,
+      isMatched: false,
       contact: [],
     });
     setInputValue("");

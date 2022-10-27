@@ -12,6 +12,10 @@ export default function Nav() {
           <li>
             <Link to="/about">About</Link>
           </li>
+
+          <li>
+            <Link to="/matched">Click here if you found your match</Link>
+          </li>
         </ul>
       </nav>
     </header>
