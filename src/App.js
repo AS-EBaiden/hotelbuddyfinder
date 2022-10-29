@@ -15,6 +15,7 @@ function App() {
     <>
       <Nav />
       <main className="App">
+        <h1>Roomie-Buddy</h1>
         <Routes>
           <Route
             path="/"

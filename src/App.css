@@ -1,18 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+/* nice form style inspiration
+https://codepen.io/icorrea/pen/GNGyXv */
 .App {
   text-align: center;
 }
 
 body {
-  margin: 20px;
+  color: white;
+
+  /* margin: 20px; */
   font-family: "Poppins";
-  background: #d1dedd;
+  background: hsla(266, 96%, 10%, 1);
+
+background: linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
+
+background: -moz-linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
+
+background: -webkit-linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#160132", endColorstr="#A51874", GradientType=1 );
+
+
+  /* background: hsla(266, 96%, 10%, 1);
+
+background: linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 77%, hsla(259, 96%, 10%, 1) 100%);
+
+background: -moz-linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 77%, hsla(259, 96%, 10%, 1) 100%);
+
+background: -webkit-linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 77%, hsla(259, 96%, 10%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#160132", endColorstr="#A51874", GradientType=1 ); */
+
+  /* background: hsla(266, 96%, 10%, 1);
+
+background: linear-gradient(102deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 23%, hsla(288, 78%, 12%, 1) 77%, hsla(259, 96%, 10%, 1) 100%);
+
+background: -moz-linear-gradient(102deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 23%, hsla(288, 78%, 12%, 1) 77%, hsla(259, 96%, 10%, 1) 100%);
+
+background: -webkit-linear-gradient(102deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 23%, hsla(288, 78%, 12%, 1) 77%, hsla(259, 96%, 10%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#160132", endColorstr="#A51874", GradientType=1 ); */
+  /* background: #870d6d;
+
+  background: hsla(266, 96%, 10%, 1);
+
+background: linear-gradient(90deg, hsla(266, 96%, 10%, 1) 0%, hsla(304, 58%, 26%, 1) 50%, hsla(288, 78%, 12%, 1) 91%, hsla(259, 96%, 10%, 1) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(266, 96%, 10%, 1) 0%, hsla(304, 58%, 26%, 1) 50%, hsla(288, 78%, 12%, 1) 91%, hsla(259, 96%, 10%, 1) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(266, 96%, 10%, 1) 0%, hsla(304, 58%, 26%, 1) 50%, hsla(288, 78%, 12%, 1) 91%, hsla(259, 96%, 10%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#160132", endColorstr="#6A1C65", GradientType=1 ); */
+
+  /* bgcolor palette /https://coolors.co/160132-601a5b-2e0738-100130 */
+  /* background-image: url("C:\Users\ebaiden\Projects\personal\hotelbuddyfinder\public\dallebg.png"); */
+  /* background-attachment: fixed;
+  background-size: cover; */
+}
+nav, main {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.glow {
+  color:white;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+main h1 {
+  font-size:4.5rem ;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
 }
 ul, li {
   padding: 0;
   list-style-type: none;
 }
 h1,h2,h3 {
-  color: #394447
+  /* color: #394447 */
 }
 p {
   /* color: #828b8a; */
@@ -20,18 +92,24 @@ p {
 }
 
 header {
-    max-width: 1200px;
-    margin: 40px auto; /*40px top and bottom*/
+    /* max-width: 1200px; */
+    /* padding:  40px; */
+    padding: 1.5rem;
+    margin: 0px 0px 40px 0px;
+    background-color: #85006a82;
+    /* margin: 40px auto; 40px top and bottom */
     /* border-bottom: 1px solid #bbc7c7; */
-    border-bottom: 1px solid #D2DFDE;
-
+    border-bottom: 1px solid #b01390;
 }
+
+
 
 .profiles-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 60px;
   margin: 20px auto;
+
 }
 
 .profile-input {
@@ -43,12 +121,50 @@ header {
 
 .profile-input  input {
   padding:20px;
+  width: -webkit-fill-available;
   /* margin: 20px; */
-  width: 100%;
+  /* width: 100%; */
+  background: #d8c1d2;
 
+  padding: 5px 10px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 3px 0px #6b2758;
+  
 }
+
+.hero-form-container {
+padding: 20px;
+
+margin: 49px 102px;
+    background: #ffffff29;
+    border-radius: 10px;
+}
+
+
 h5{
   margin: auto;
+}
+
+.form-btn{
+  width: 100%;
+  padding: 1%;
+  background-color: rgb(255, 196, 0); 
+  border-radius: 9999px;
+  border: none;
+}
+
+.successSubmission {
+  text-align: center;
+width:300px;
+padding: 20px 10px;
+        /* padding: 5px 10px; */
+        /* height: 40px; */
+        border-radius: 5px;
+        border: none;
+        background: #77bd7d;
+        box-shadow: 0 3px 0px #4d8351;
 }
 
 .ul-list, .social-list {
@@ -59,7 +175,8 @@ h5{
 }
 .ul-list li {
   display: inline-block;
-  padding: 20px;
+  /* padding: 20px; */
+  padding: 2rem;
 }
 
 .social-list li {
@@ -74,6 +191,16 @@ h5{
   margin: 20px
 }
 
+
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
 
 
 @keyframes App-logo-spin {

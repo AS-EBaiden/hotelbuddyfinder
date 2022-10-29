@@ -14,7 +14,9 @@ export default function Nav() {
           </li>
 
           <li>
-            <Link to="/matched">Click here if you found your match</Link>
+            <Link to="/matched" className="glow">
+              Click here if you found your match
+            </Link>
           </li>
         </ul>
       </nav>
