@@ -6,6 +6,7 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
     first_name: "",
     username: "",
     pronouns: "",
+    img: "",
     isHosting: false,
     contact: [],
   });
@@ -93,39 +94,57 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
           <h2>Put your info here</h2>
           <form onSubmit={addPerson} className="hero-form-container">
             <div className="profile-input">
+              {/* <div className="input-container"> */}
               {Object.keys(initialValues)?.map((r, i) => {
                 return (
-                  <div
-                    key={i}
-                    style={
-                      {
-                        // padding: r === "contact" ? "0px 0px 0px 5%" : "0 5%", //flex instead of grid https://stackoverflow.com/questions/63471747/how-to-make-the-last-items-in-my-css-grid-stretch-full-width-with-equal-spacing
-                      }
-                    }
-                  >
+                  <>
                     {r === "contact" ? (
-                      <div>
-                        <label>{r}</label>
-
+                      <div style={{ gridColumn: "1 / 4" }}>
                         <div
+                          className="contact_style"
                           style={{
+                            gridTemplateColumns: "1fr 1fr",
                             display: "grid",
-                            gridTemplateColumns: " 5fr 1fr",
-                            gap: "60px",
-                            margin: "20px auto",
                           }}
                         >
-                          <div>
-                            <input
-                              type="text"
-                              value={inputValue}
-                              onChange={contactChangeHandler}
-                            />
-                          </div>
+                          <div
+                            className="contact-grid"
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns: "4fr 1fr",
+                              // gridTemplateColumns: " 5fr 1fr",
+                              gap: "60px",
+                              // margin: "20px auto",
+                            }}
+                          >
+                            <div>
+                              <label>{r}</label>
+                              <input
+                                type="text"
+                                value={inputValue}
+                                onChange={contactChangeHandler}
+                              />
+                            </div>
 
-                          <button onClick={addContact}>add more</button>
+                            <button onClick={addContact}>add more</button>
+                          </div>
+                          <div
+                            style={{
+                              display: "grid",
+                              gridTemplateColumns: "1fr 1fr 1fr",
+                            }}
+                          >
+                            {contactData?.map((item, j) => (
+                              <div key={j}>
+                                <div>{item}</div>
+                                <span>
+                                  <button>🗑️</button>
+                                </span>
+                              </div>
+                            ))}
+                          </div>
                         </div>
-                        <div>
+                        {/* <div>
                           {contactData?.map((item, j) => (
                             <div key={j}>
                               <div>{item}</div>
@@ -134,12 +153,14 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
                               </span>
                             </div>
                           ))}
-                        </div>
+                        </div> */}
                       </div>
                     ) : r === "isHosting" ? (
-                      <>
+                      <div>
                         <label>Are You Hosting or Looking</label>
+
                         <select
+                          style={{ height: "50px" }}
                           onChange={(e) =>
                             setSelectOption(Boolean(e.target.value))
                           }
@@ -147,9 +168,19 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
                           <option value={false}>looking</option>
                           <option value={true}>hosting</option>
                         </select>
-                      </>
+                      </div>
+                    ) : r === "img" ? (
+                      <div>
+                        <label>Upload your profile pic</label>
+                        <input
+                          type="file"
+                          id="img"
+                          name="img"
+                          accept="image/*"
+                        />
+                      </div>
                     ) : (
-                      <>
+                      <div>
                         <label>{r}</label>
                         <input
                           type="text"
@@ -157,13 +188,14 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
                           value={initialValues.r}
                           onChange={changeHandler}
                         />
-                      </>
+                      </div>
                     )}
-                  </div>
+                  </>
                 );
               })}
 
               {/* reference: https://codesandbox.io/s/elastic-wave-36ous?fontsize=14&hidenavigation=1&theme=dark&file=/src/App.js:847-854 */}
+              {/* </div>// */}
             </div>
             {/* add ability to add multiple inputs sets */}
 

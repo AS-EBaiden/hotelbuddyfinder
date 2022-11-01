@@ -114,12 +114,12 @@ header {
 
 .profile-input {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 60px;
   margin: 20px auto; 
 }
 
-.profile-input  input {
+.profile-input  input, select {
   padding:20px;
   width: -webkit-fill-available;
   /* margin: 20px; */
