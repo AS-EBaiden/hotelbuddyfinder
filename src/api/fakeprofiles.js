@@ -1,6 +1,6 @@
 export const users = [
   {
-    first_name: "Rhonda",
+    name: "Rhonda",
     username: "user1",
     pronouns: "She/Her/Hers",
     img: "https://randomuser.me/api/portraits/women/91.jpg",
@@ -13,7 +13,7 @@ export const users = [
     ],
   },
   {
-    first_name: "Jasmine",
+    name: "Jasmine",
     username: "user2",
     pronouns: "She/Her/Them",
     img: "https://randomuser.me/api/portraits/women/91.jpg",
@@ -26,7 +26,7 @@ export const users = [
     ],
   },
   {
-    first_name: "Helene",
+    name: "Helene",
     username: "user3",
     pronouns: "She/Her/Hers",
     img: "https://randomuser.me/api/portraits/women/91.jpg",
@@ -39,7 +39,7 @@ export const users = [
     ],
   },
   {
-    first_name: "jolene",
+    name: "jolene",
     username: "user4",
     pronouns: "She/Her/Hers",
     img: "https://randomuser.me/api/portraits/women/91.jpg",

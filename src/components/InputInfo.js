@@ -4,7 +4,7 @@ import { db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   const [initialValues, setInitialValues] = useState({
-    first_name: "",
+    name: "",
     username: "",
     pronouns: "",
     img: "",
@@ -105,7 +105,7 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
     // });
     if (
       initialValues === "" ||
-      initialValues.first_name === "" ||
+      initialValues.name === "" ||
       initialValues.username === "" ||
       initialValues.pronouns === ""
     )
@@ -281,7 +281,7 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   //   setPersonInfo(newArr);
 
   //   setInitialValues({
-  //     first_name: "",
+  //     name: "",
   //     username: "",
   //     pronouns: "",
   //     isHosting: false,

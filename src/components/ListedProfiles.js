@@ -17,7 +17,7 @@ export default function ListedProfiles({ personInfo, wordContain2 }) {
             }}
           >
             <h2>
-              {ppl.first_name}{" "}
+              {ppl.name}{" "}
               <em style={{ fontSize: "1.2rem" }}>({ppl.username})</em>
             </h2>
             <h4>{ppl.pronouns}</h4>
@@ -29,7 +29,7 @@ export default function ListedProfiles({ personInfo, wordContain2 }) {
                 src={
                   ppl.img ?? "https://api.lorem.space/image/face?w=150&h=150"
                 }
-                alt={ppl.first_name}
+                alt={ppl.name}
               />
             </div>
             <h5>Contact</h5>
