@@ -7,31 +7,35 @@ export default function Home({ personInfo, setPersonInfo }) {
     switch (true) {
       case str.includes("twitter"):
         return (
-          <>
+          <a href={str} target="_blank">
             <i className="fa fa-twitter" style={{ padding: "5px" }}></i>
             {str == "twitter" || str == "twitter.com"
               ? ""
               : str.split("twitter.com/")[1].split("/")[0]}
-          </>
+          </a>
         );
       case str.includes("instagram"):
         return (
-          <>
+          <a href={str} target="_blank">
             <i className="fa fa-instagram" style={{ padding: "5px" }}></i>
             {str == "instagram" || str == "instagram.com"
               ? ""
               : str.split("instagram.com/")[1].split("/")[0]}
-          </>
+          </a>
         );
       case str.includes("@"):
         return (
-          <>
+          <a href={`mailto:${str}`} target="_blank">
             <i className="fa fa-envelope" style={{ padding: "5px" }}></i>
             {str}
-          </>
+          </a>
         );
       default:
-        return str;
+        return (
+          <a href={str} target="_blank">
+            {str}
+          </a>
+        );
     }
   };
   return (

@@ -19,7 +19,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   const [errorUser, setErrorUser] = useState(false);
   const [areInputsEmpty, setAreImputsEmpty] = useState(null);
   const [file, setFile] = useState("");
-  const [imgFile, setImgFile] = useState("");
 
   // useEffect(() => {
   //   setInitialValues((prev) => ({ ...prev, img: file.name }));
@@ -204,7 +203,7 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
     await testfunction();
   };
 
-  console.log("initial", initialValues);
+  // console.log("initial", initialValues);
 
   // const addPerson = async (e) => {
   //   e.preventDefault();
@@ -345,8 +344,8 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   //   }
   // };
 
-  console.log("init val after everything", initialValues);
-  console.log("person data", personInfo);
+  // console.log("init val after everything", initialValues);
+  // console.log("person data", personInfo);
 
   return (
     <div
@@ -356,7 +355,13 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
       }}
     >
       {submissionSucces ? (
-        <div className="successSubmission">Success</div>
+        // <div className="successSubmission">Success</div>
+        <div>
+          <h3 style={{ fontSize: "2.5rem", color: "#77bd7d" }}>Success!!</h3>
+          <h3>
+            <em>Please</em> come back and let us know when you've been matched
+          </h3>
+        </div>
       ) : (
         <section>
           <h2>Put your info here</h2>
