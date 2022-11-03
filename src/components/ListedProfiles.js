@@ -16,7 +16,10 @@ export default function ListedProfiles({ personInfo, wordContain2 }) {
               padding: "20px",
             }}
           >
-            <h2>{ppl.first_name}</h2>
+            <h2>
+              {ppl.first_name}{" "}
+              <em style={{ fontSize: "1.2rem" }}>({ppl.username})</em>
+            </h2>
             <h4>{ppl.pronouns}</h4>
 
             <h4>{ppl.isHosting ? "hosting" : "looking"} </h4>

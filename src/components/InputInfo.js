@@ -104,6 +104,8 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
     // });
 
     if (!file) return;
+    // if (initialValues === "" || (!contactData.length > 0 && inputValue === ""))
+    //   return alert("please make sure all fields are filled");
     const storageRef = ref(storage, initialValues.username);
     const uploadTask = uploadBytesResumable(storageRef, file);
     await uploadTask.on(
@@ -482,7 +484,7 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
                       </div>
                     ) : r === "img" ? (
                       <div>
-                        <label>Upload your profile pic</label>
+                        <label>Upload your real pic</label>
                         <input
                           type="file"
                           id="img"
