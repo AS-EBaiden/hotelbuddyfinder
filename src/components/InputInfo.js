@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../firebase";
-export default function InputInfo({ personInfo, setPersonInfo }) {
+export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   const [initialValues, setInitialValues] = useState({
     first_name: "",
     username: "",
@@ -80,6 +80,54 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
     setInputValue(e.target.value);
   };
 
+  const removeContact = (e, id) => {
+    e.preventDefault();
+    const removeId = contactData.indexOf(contactData[id]);
+    const filteredItems = contactData.filter(function (rem, l) {
+      return l !== removeId;
+    });
+    setContacData(filteredItems);
+  };
+
+  const wordContain = (str) => {
+    console.log("sttt", str);
+    if (str == "twitter") return;
+    var newstr = str.split("twitter.com/")[1].split("/")[0];
+    return newstr;
+  };
+
+  // const wordContain2 = (str) => {
+  //   switch (true) {
+  //     case str.includes("twitter"):
+  //       return (
+  //         <>
+  //           <i className="fa fa-twitter" style={{ padding: "5px" }}></i>
+  //           {str == "twitter" || str == "twitter.com"
+  //             ? ""
+  //             : str.split("twitter.com/")[1].split("/")[0]}
+  //         </>
+  //       );
+  //     case str.includes("instagram"):
+  //       return (
+  //         <>
+  //           <i className="fa fa-instagram" style={{ padding: "5px" }}></i>
+  //           {str == "instagram" || str == "instagram.com"
+  //             ? ""
+  //             : str.split("instagram.com/")[1].split("/")[0]}
+  //         </>
+  //       );
+  //     case str.includes("@"):
+  //       return (
+  //         <>
+  //           <i className="fa fa-envelope" style={{ padding: "5px" }}></i>
+  //           {str}
+  //         </>
+  //       );
+  //     default:
+  //       return str;
+  //   }
+  // };
+
   return (
     <div
       style={{
@@ -97,7 +145,7 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
               {/* <div className="input-container"> */}
               {Object.keys(initialValues)?.map((r, i) => {
                 return (
-                  <>
+                  <React.Fragment key={i}>
                     {r === "contact" ? (
                       <div style={{ gridColumn: "1 / 4" }}>
                         <div
@@ -105,6 +153,7 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
                           style={{
                             gridTemplateColumns: "1fr 1fr",
                             display: "grid",
+                            gap: "20px",
                           }}
                         >
                           <div
@@ -113,33 +162,70 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
                               display: "grid",
                               gridTemplateColumns: "4fr 1fr",
                               // gridTemplateColumns: " 5fr 1fr",
-                              gap: "60px",
+                              gap: "20px",
                               // margin: "20px auto",
                             }}
                           >
                             <div>
                               <label>{r}</label>
                               <input
+                                placeholder="any social media link or email "
                                 type="text"
                                 value={inputValue}
                                 onChange={contactChangeHandler}
                               />
                             </div>
 
-                            <button onClick={addContact}>add more</button>
+                            <button
+                              onClick={addContact}
+                              style={{
+                                borderRadius: "10px",
+                                height: "50px",
+                                border: "none",
+                                background: "rgb(32, 231, 92)",
+                                position: "relative",
+                                top: "20px",
+                              }}
+                            >
+                              Add
+                            </button>
                           </div>
                           <div
                             style={{
-                              display: "grid",
-                              gridTemplateColumns: "1fr 1fr 1fr",
+                              display: "inline-flex",
+                              flexFlow: "wrap",
+                              // display: "grid",
+                              // gridTemplateColumns: "repeat(3, 1fr)",
                             }}
                           >
                             {contactData?.map((item, j) => (
-                              <div key={j}>
-                                <div>{item}</div>
-                                <span>
-                                  <button>🗑️</button>
-                                </span>
+                              <div
+                                key={j}
+                                style={{
+                                  display: "inline-flex",
+                                  height: "fit-content",
+                                }}
+                              >
+                                <div style={{ padding: "0 10px" }}>
+                                  {/* {item.includes("twitter") ? (
+                                    <>
+                                      <i className="fa fa-twitter"></i>
+                                      {wordContain(item)}
+                                    </>
+                                  ) : (
+                                    "heh"
+                                  )} */}
+                                  {wordContain2(item)}
+                                </div>
+
+                                {/* <span> */}
+                                <a
+                                  href="#"
+                                  aria-label="Close"
+                                  className="close"
+                                  onClick={(e) => removeContact(e, j)}
+                                />
+                                {/* </span> */}
                               </div>
                             ))}
                           </div>
@@ -183,6 +269,7 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
                       <div>
                         <label>{r}</label>
                         <input
+                          placeholder={r}
                           type="text"
                           name={r}
                           value={initialValues.r}
@@ -190,7 +277,7 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
                         />
                       </div>
                     )}
-                  </>
+                  </React.Fragment>
                 );
               })}
 
@@ -203,7 +290,7 @@ export default function InputInfo({ personInfo, setPersonInfo }) {
               <button
                 className="form-btn"
                 type="submit"
-                style={{ width: "100%", padding: "1%" }}
+                style={{ width: "100%", padding: "1.1rem" }}
               >
                 Send
               </button>

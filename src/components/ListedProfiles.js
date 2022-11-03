@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ListedProfiles({ personInfo }) {
+export default function ListedProfiles({ personInfo, wordContain2 }) {
   return (
     <div>
       <section className="profiles-container">
@@ -11,7 +11,8 @@ export default function ListedProfiles({ personInfo }) {
             style={{
               maxHeight: "600px",
               borderRadius: "10px",
-              background: ppl.isHosting === false ? "#AA839F" : "#F7EBF3",
+              background:
+                ppl.isHosting === false ? "#AA839F" : "hsl(336deg 75% 37%)",
               padding: "20px",
             }}
           >
@@ -27,7 +28,13 @@ export default function ListedProfiles({ personInfo }) {
             <div style={{ display: "inline-flex" }}>
               <ul className="social-list">
                 {ppl.contact.map((item, j) => (
-                  <li key={j}>🍌{item}</li>
+                  <li key={j}>
+                    {/* <a href="#" className="fa fa-twitter"></a>
+                    {item} */}
+                    <a href={item} target="_blank">
+                      {wordContain2(item)}
+                    </a>
+                  </li>
                 ))}
               </ul>
             </div>

@@ -37,6 +37,16 @@ export default function Lab() {
     
     `;
 
+  const removeElFromList = `
+    const removeContact = (e, id) => {
+      e.preventDefault();
+      const removeId = contactData.indexOf(contactData[id]);
+      const filteredItems = contactData.filter(function (rem, l) {
+        return l !== removeId;
+      });
+      setContacData(filteredItems);
+    };`;
+
   return (
     <div>
       <h2>E.B.'s Lab</h2>
@@ -68,6 +78,18 @@ export default function Lab() {
           <div>
             <blockquote>
               <pre>{selectionOption}</pre>
+            </blockquote>
+          </div>
+
+          <div>https://codesandbox.io/s/select-3p3oe?file=/demo.js</div>
+        </article>
+
+        <article>
+          <h3>Remove item from list</h3>
+          <time></time>
+          <div>
+            <blockquote>
+              <pre>{removeElFromList}</pre>
             </blockquote>
           </div>
 
