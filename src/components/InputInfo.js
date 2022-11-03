@@ -18,14 +18,61 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   const [submissionSucces, setSubmissionSuccess] = useState(false);
   const [errorUser, setErrorUser] = useState(false);
   const [areInputsEmpty, setAreImputsEmpty] = useState(null);
+  const [file, setFile] = useState("");
+  const [imgFile, setImgFile] = useState("");
 
-  useEffect(() => {
-    const uploadFile = () => {
-      const name = new Date().getTime() + initialValues.first_name;
-      console.log(name);
-      const sotrageRef = ref(storage, initialValues.first_name);
-    };
-  }, []);
+  // useEffect(() => {
+  //   setInitialValues((prev) => ({ ...prev, img: file.name }));
+  // }, [file]);
+
+  // useEffect(() => {
+  //   const uploadFile = () => {
+  //     const uniqname = new Date().getTime() + initialValues.username;
+  //     console.log(uniqname);
+  //     // const storageRef = ref(storage, initialValues.username ?? uniqname);
+  //     const storageRef = storage().ref(file.name);
+
+  //     const uploadTask = uploadBytesResumable(storageRef, file);
+
+  //     // Register three observers:
+  //     // 1. 'state_changed' observer, called any time the state changes
+  //     // 2. Error observer, called on failure
+  //     // 3. Completion observer, called on successful completion
+  //     uploadTask.on(
+  //       "state_changed",
+  //       (snapshot) => {
+  //         // Observe state change events such as progress, pause, and resume
+  //         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+  //         const progress =
+  //           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //         console.log("Upload is " + progress + "% done");
+  //         switch (snapshot.state) {
+  //           case "paused":
+  //             console.log("Upload is paused");
+  //             break;
+  //           case "running":
+  //             console.log("Upload is running");
+  //             break;
+  //           default:
+  //             break;
+  //         }
+  //       },
+  //       (error) => {
+  //         // Handle unsuccessful uploads
+  //         console.log("error", error);
+  //       },
+  //       () => {
+  //         // Handle successful uploads on complete
+  //         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+  //         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+  //           setInitialValues((prev) => ({ ...prev, img: downloadURL }));
+  //         });
+  //       }
+  //     );
+  //   };
+  //   console.log("file", file);
+  //   file && uploadFile();
+  // }, [file]);
 
   // const addPerson = async (e) => {
   //   e.preventDefault();
@@ -39,32 +86,125 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   //   }
   // };
 
+  const testfunction = async () => {
+    await console.log("waiting for job to be done");
+  };
+  // console.log("file", file);
+
   const addPerson = async (e) => {
     e.preventDefault();
+    // const file = e.target[0]?.files[0]
 
     const newArr = personInfo.slice();
 
-    newArr.splice(0, 0, {
+    // newArr.splice(0, 0, {
+    //   ...initialValues,
+    //   isHosting: selectOption,
+    //   contact:
+    //     contactData.length > 1 ? contactData : [...contactData, inputValue],
+    // });
+
+    if (!file) return;
+    const storageRef = ref(storage, initialValues.username);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+    await uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Observe state change events such as progress, pause, and resume
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            console.log("Upload is paused");
+            break;
+          case "running":
+            console.log("Upload is running");
+            break;
+          default:
+            break;
+        }
+      },
+      (error) => {
+        // Handle unsuccessful uploads
+        console.log("error", error);
+      },
+      () => {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          // setInitialValues((prev) => ({ ...prev, img: downloadURL }));
+
+          setInitialValues({
+            ...initialValues,
+            isHosting: selectOption,
+            isMatched: "false",
+            img: downloadURL,
+            contact:
+              contactData.length > 1
+                ? contactData
+                : [...contactData, inputValue],
+          });
+
+          newArr.splice(0, 0, {
+            ...initialValues,
+            isHosting: selectOption,
+            isMatched: "false",
+            img: downloadURL,
+            contact:
+              contactData.length > 1
+                ? contactData
+                : [...contactData, inputValue],
+          });
+          setPersonInfo(newArr);
+          setSubmissionSuccess(true);
+
+          addDoc(collection(db, "users"), {
+            ...initialValues,
+            isHosting: selectOption,
+            isMatched: "false",
+            img: downloadURL,
+            contact:
+              contactData.length > 1
+                ? contactData
+                : [...contactData, inputValue],
+          });
+        });
+      }
+    );
+
+    // const newArr = personInfo.slice();
+
+    // newArr.splice(0, 0, {
+    //   ...initialValues,
+    //   isHosting: selectOption,
+    //   img: downloadURL,
+    //   contact:
+    //     contactData.length > 1 ? contactData : [...contactData, inputValue],
+    // });
+
+    const user = {
       ...initialValues,
       isHosting: selectOption,
       contact:
         contactData.length > 1 ? contactData : [...contactData, inputValue],
-    });
+    };
 
-    try {
-      const res = await addDoc(collection(db, "users"), {
-        ...initialValues,
-        isHosting: selectOption,
-        contact:
-          contactData.length > 1 ? contactData : [...contactData, inputValue],
-      });
-      console.log("res", res);
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const res = await addDoc(collection(db, "users"), user);
+    //   console.log("res", res);
+    //   console.log("user", user);
+    // } catch (err) {
+    //   console.log(err);
+    // }
 
-    setPersonInfo(newArr);
+    // setPersonInfo(newArr);
+
+    await testfunction();
   };
+
+  console.log("initial", initialValues);
 
   // const addPerson = async (e) => {
   //   e.preventDefault();
@@ -173,13 +313,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
     setContacData(filteredItems);
   };
 
-  const wordContain = (str) => {
-    console.log("sttt", str);
-    if (str == "twitter") return;
-    var newstr = str.split("twitter.com/")[1].split("/")[0];
-    return newstr;
-  };
-
   // const wordContain2 = (str) => {
   //   switch (true) {
   //     case str.includes("twitter"):
@@ -211,6 +344,9 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   //       return str;
   //   }
   // };
+
+  console.log("init val after everything", initialValues);
+  console.log("person data", personInfo);
 
   return (
     <div
@@ -346,6 +482,7 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
                           type="file"
                           id="img"
                           name="img"
+                          onChange={(e) => setFile(e.target.files[0])}
                           accept="image/*"
                         />
                       </div>

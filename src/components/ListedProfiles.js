@@ -20,10 +20,15 @@ export default function ListedProfiles({ personInfo, wordContain2 }) {
             <h4>{ppl.pronouns}</h4>
 
             <h4>{ppl.isHosting ? "hosting" : "looking"} </h4>
-            <img
-              src={ppl.img ?? "https://api.lorem.space/image/face?w=150&h=150"}
-              alt={ppl.first_name}
-            />
+            <div>
+              <img
+                style={{ width: "128px", height: "128px", objectFit: "cover" }}
+                src={
+                  ppl.img ?? "https://api.lorem.space/image/face?w=150&h=150"
+                }
+                alt={ppl.first_name}
+              />
+            </div>
             <h5>Contact</h5>
             <div style={{ display: "inline-flex" }}>
               <ul className="social-list">
