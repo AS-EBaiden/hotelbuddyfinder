@@ -5,7 +5,20 @@ https://codepen.io/icorrea/pen/GNGyXv */
 .App {
   text-align: center;
 }
+html {
+  background-repeat: no-repeat;
+  background: hsla(266, 96%, 10%, 1);
+  /* background: hsla(266, 96%, 10%, 1);
 
+  background: linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
+  
+  background: -moz-linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
+  
+  background: -webkit-linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#160132", endColorstr="#A51874", GradientType=1 ); */
+  
+}
 body {
   color: white;
 
@@ -13,13 +26,14 @@ body {
   font-family: "Poppins";
   background: hsla(266, 96%, 10%, 1);
 
-background: linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
+  background: linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
+  
+  background: -moz-linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
+  
+  background: -webkit-linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#160132", endColorstr="#A51874", GradientType=1 );
 
-background: -moz-linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
-
-background: -webkit-linear-gradient(315deg, hsla(266, 96%, 10%, 1) 0%, hsla(321, 75%, 37%, 1) 13%, hsla(288, 78%, 12%, 1) 52%, hsla(259, 96%, 10%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#160132", endColorstr="#A51874", GradientType=1 );
 
 
   /* background: hsla(266, 96%, 10%, 1);
@@ -88,7 +102,7 @@ h1,h2,h3 {
 }
 p {
   /* color: #828b8a; */
-  color: #3C474A
+  /* color: #3C474A */
 }
 
 header {
@@ -214,6 +228,15 @@ button {
 .profile-card
 {
   margin: 20px
+}
+
+.about-content {
+  font-size: 1.5rem;
+}
+
+.warning {
+  font-size: 2rem;
+  color: red;
 }
 
 

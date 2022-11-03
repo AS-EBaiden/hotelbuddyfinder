@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { addDoc, collection, doc, setDoc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, storage } from "../firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   const [initialValues, setInitialValues] = useState({
     first_name: "",
@@ -15,21 +16,42 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   const [contactData, setContacData] = useState([]);
   const [selectOption, setSelectOption] = useState(false);
   const [submissionSucces, setSubmissionSuccess] = useState(false);
+  const [errorUser, setErrorUser] = useState(false);
+  const [areInputsEmpty, setAreImputsEmpty] = useState(null);
+
+  useEffect(() => {
+    const uploadFile = () => {
+      const name = new Date().getTime() + initialValues.first_name;
+      console.log(name);
+      const sotrageRef = ref(storage, initialValues.first_name);
+    };
+  }, []);
 
   const addPerson = async (e) => {
     e.preventDefault();
-    console.log("printed");
     try {
-      const res = await addDoc(collection(db, "cities"), {
-        name: "Los Angeles",
-        state: "CA",
-        country: "USA",
+      const res = await setDoc(doc(db, "users", res.user.uid), {
+        ...personInfo,
       });
       console.log("res", res);
     } catch (err) {
       console.log(err);
     }
   };
+  // const addPerson = async (e) => {
+  //   e.preventDefault();
+  //   console.log("printed");
+  //   try {
+  //     const res = await addDoc(collection(db, "cities"), {
+  //       name: "Los Angeles",
+  //       state: "CA",
+  //       country: "USA",
+  //     });
+  //     console.log("res", res);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   // const addPerson = () => {
   //   setSubmissionSuccess(true);
@@ -72,6 +94,13 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
 
   const changeHandler = (e) => {
     e.preventDefault();
+    let isExisting =
+      e.target.name === "username"
+        ? personInfo.some((prs) => prs.username === e.target.value)
+        : "";
+    setErrorUser(isExisting);
+    console.log("initial val", [e.target.name]);
+    setAreImputsEmpty(initialValues[e.target.name] === "");
     setInitialValues({ ...initialValues, [e.target.name]: e.target.value });
   };
 
@@ -268,6 +297,17 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
                     ) : (
                       <div>
                         <label>{r}</label>
+                        {r === "username" && errorUser && (
+                          <span
+                            style={{
+                              padding: "5px",
+                              color: "#ff7c7c",
+                              fontSize: ".8rem",
+                            }}
+                          >
+                            already exists, try again
+                          </span>
+                        )}
                         <input
                           placeholder={r}
                           type="text"
@@ -290,7 +330,8 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
               <button
                 className="form-btn"
                 type="submit"
-                style={{ width: "100%", padding: "1.1rem" }}
+                style={{ width: "100%", padding: "1%" }}
+                disabled={errorUser}
               >
                 Send
               </button>

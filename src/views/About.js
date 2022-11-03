@@ -3,8 +3,8 @@ import React from "react";
 export default function About() {
   return (
     <div>
-      <section>
-        <h1>About</h1>
+      <section style={{ padding: "0 20%" }} className="about-content">
+        <h2>About</h2>
         <p>
           Yo! Listen. This site is to help Afrotech attendees find roomates for
           the entirety of the event.
@@ -20,7 +20,8 @@ export default function About() {
         </p>
         <p>
           No data will be shared with a third party service, but just in case,{" "}
-          <b>Use at your own risk. </b>{" "}
+          <br />
+          <b className="warning">Use at your own risk. </b>{" "}
         </p>
       </section>
     </div>
