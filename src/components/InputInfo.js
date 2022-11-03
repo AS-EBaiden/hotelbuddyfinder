@@ -27,17 +27,72 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
     };
   }, []);
 
+  // const addPerson = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const res = await setDoc(doc(db, "users", res.user.uid), {
+  //       ...personInfo,
+  //     });
+  //     console.log("res", res);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   const addPerson = async (e) => {
     e.preventDefault();
+
+    const newArr = personInfo.slice();
+
+    newArr.splice(0, 0, {
+      ...initialValues,
+      isHosting: selectOption,
+      contact:
+        contactData.length > 1 ? contactData : [...contactData, inputValue],
+    });
+
     try {
-      const res = await setDoc(doc(db, "users", res.user.uid), {
-        ...personInfo,
+      const res = await addDoc(collection(db, "users"), {
+        ...initialValues,
+        isHosting: selectOption,
+        contact:
+          contactData.length > 1 ? contactData : [...contactData, inputValue],
       });
       console.log("res", res);
     } catch (err) {
       console.log(err);
     }
+
+    setPersonInfo(newArr);
   };
+
+  // const addPerson = async (e) => {
+  //   e.preventDefault();
+
+  //   if (initialValues === "" || (!contactData.length > 0 && inputValue === ""))
+  //     return alert("please make sure all fields are filled");
+
+  //   const newArr = personInfo.slice();
+
+  //   newArr.splice(0, 0, {
+  //     ...initialValues,
+  //     isHosting: selectOption,
+  //     contact:
+  //       contactData.length > 1 ? contactData : [...contactData, inputValue],
+  //   });
+
+  //   // try {
+  //   //   const res = await addDoc(collection(db, "users"), {
+  //   //     ...newArr,
+  //   //   });
+  //   //   console.log("res", res);
+  //   // } catch (err) {
+  //   //   console.log(err);
+  //   // }
+
+  //   setPersonInfo(newArr);
+  // };
+
   // const addPerson = async (e) => {
   //   e.preventDefault();
   //   console.log("printed");
@@ -99,7 +154,7 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
         ? personInfo.some((prs) => prs.username === e.target.value)
         : "";
     setErrorUser(isExisting);
-    console.log("initial val", [e.target.name]);
+    // console.log("initial val", [e.target.name]);
     setAreImputsEmpty(initialValues[e.target.name] === "");
     setInitialValues({ ...initialValues, [e.target.name]: e.target.value });
   };
