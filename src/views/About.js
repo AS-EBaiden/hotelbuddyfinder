@@ -9,6 +9,7 @@ export default function About() {
           Yo! Listen. This site is to help Afrotech attendees find roomates for
           the entirety of the event.
         </p>
+        <p> WE ARE NOT AFFILLIATED WITH OFFICIAL AFROTECH </p>
         <p>
           Data will be kept for the month of November 2022, after that, it will
           self delete.

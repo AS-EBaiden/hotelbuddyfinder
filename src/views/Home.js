@@ -36,7 +36,7 @@ export default function Home({ personInfo, setPersonInfo }) {
   };
   return (
     <>
-      <h1>Roomie-Buddy</h1>
+      <h1>Roomie-Finder</h1>
       <InputInfo
         personInfo={personInfo}
         setPersonInfo={setPersonInfo}

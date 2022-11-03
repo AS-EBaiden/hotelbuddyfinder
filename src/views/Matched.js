@@ -55,7 +55,7 @@ export default function Matched({ personInfo, setPersonInfo }) {
             />
           </div>
           <div style={{ padding: "2%" }}>
-            <label>Your match username</label>
+            <label>Your roomate username</label>
             <input
               className="matched-inputs"
               onChange={changeHandler}
