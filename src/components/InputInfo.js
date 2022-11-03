@@ -93,6 +93,7 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   const addPerson = async (e) => {
     e.preventDefault();
     // const file = e.target[0]?.files[0]
+    console.log("content", contactData.length);
 
     const newArr = personInfo.slice();
 
@@ -102,10 +103,20 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
     //   contact:
     //     contactData.length > 1 ? contactData : [...contactData, inputValue],
     // });
+    if (
+      initialValues === "" ||
+      initialValues.first_name === "" ||
+      initialValues.username === "" ||
+      initialValues.pronouns === ""
+    )
+      return alert("please make sure all fields are filled");
+    if (contactData.length === 0 && inputValue === "")
+      return alert("please make sure all fields are filled");
+    if (!file) {
+      alert("please make sure all fields are filled");
+      return;
+    }
 
-    if (!file) return;
-    // if (initialValues === "" || (!contactData.length > 0 && inputValue === ""))
-    //   return alert("please make sure all fields are filled");
     const storageRef = ref(storage, initialValues.username);
     const uploadTask = uploadBytesResumable(storageRef, file);
     await uploadTask.on(
@@ -312,6 +323,11 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
       return l !== removeId;
     });
     setContacData(filteredItems);
+  };
+
+  const isitdone = (e) => {
+    e.preventDefault();
+    console.log("is it working", contactData.length === 0 && inputValue === "");
   };
 
   // const wordContain2 = (str) => {

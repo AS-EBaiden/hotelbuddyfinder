@@ -10,10 +10,12 @@ import Matched from "./views/Matched";
 import { useEffect } from "react";
 import { getDocs, collection, query } from "firebase/firestore";
 import { db } from "./firebase";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 function App() {
   const [personInfo, setPersonInfo] = useState([]);
+
+  const helmetContext = {};
   useEffect(() => {
     const fetchData = async () => {
       let list = [];
@@ -31,17 +33,19 @@ function App() {
   }, []);
   return (
     <>
-      <Helmet>
-        <title>Afro Tech Roomie Finder</title>
-        <meta
-          name="description"
-          content="Waited too late to find an affordable place for Afro Tech? find a roomate"
-        />
-        <meta
-          name="keywords"
-          content="AfroTech 2022, AfroTech,  black excellence, techies, baddiesInTech, affordable loding, texas, Austin "
-        />
-      </Helmet>
+      <HelmetProvider helmetContext={helmetContext}>
+        <Helmet>
+          <title>Afro Tech Roomie Finder</title>
+          <meta
+            name="description"
+            content="Waited too late to find an affordable place for Afro Tech? find a roomate"
+          />
+          <meta
+            name="keywords"
+            content="AfroTech 2022, AfroTech,  black excellence, techies, baddiesInTech, affordable loding, texas, Austin "
+          />
+        </Helmet>
+      </HelmetProvider>
       <Nav />
       <main className="App">
         <Routes>

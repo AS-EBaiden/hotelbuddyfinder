@@ -10,8 +10,8 @@ export default function Matched({ personInfo, setPersonInfo }) {
   const [contactData, setContacData] = useState([]);
 
   const submitMatch = (e) => {
+    e.preventDefault();
     console.log("form not enabled");
-    // e.preventDefault();
 
     // if (initialValues === "" || (!contactData.length > 0 && inputValue === ""))
     //   return alert("please make sure all fields are filled");
