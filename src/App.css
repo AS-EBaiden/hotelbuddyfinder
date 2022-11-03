@@ -167,6 +167,31 @@ padding: 20px 10px;
         box-shadow: 0 3px 0px #4d8351;
 }
 
+button {
+  cursor: pointer;
+}
+
+.close {
+  padding: 0 5px;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  content: ' ';
+  height: 20px;
+  width: 2px;
+  background-color: tomato ;
+  border: 1px solid tomato;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
 .ul-list, .social-list {
   list-style-type: none;
   text-align: center;

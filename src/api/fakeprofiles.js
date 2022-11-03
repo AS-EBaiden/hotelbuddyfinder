@@ -7,7 +7,7 @@ export const users = [
     isHosting: false,
     isMatched: false,
     contact: [
-      "https://twitter.com/Ebizzill",
+      "https://instagram.com/Ebizzill",
       "https://twitter.com/Ebizzill",
       "https://twitter.com/Ebizzill",
     ],
