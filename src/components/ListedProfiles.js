@@ -36,7 +36,25 @@ export default function ListedProfiles({ personInfo, wordContain2 }) {
                   <li key={j}>
                     {/* <a href="#" className="fa fa-twitter"></a>
                     {item} */}
-                    <a href={item} target="_blank">
+                    {/* <a href={item} target="_blank">
+                      {wordContain2(item)}
+                    </a> */}
+                    <a
+                      href={
+                        item.includes("@")
+                          ? `mailto:${item}`
+                          : item.includes("http://") ||
+                            item.includes("https://")
+                          ? item
+                          : `http://${item}`
+                      }
+                      // href={
+                      //   item.includes("http://") || item.includes("https://")
+                      //     ? item
+                      //     : `http://${item}`
+                      // }
+                      target="_blank"
+                    >
                       {wordContain2(item)}
                     </a>
                   </li>

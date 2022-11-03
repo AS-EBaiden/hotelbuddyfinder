@@ -133,6 +133,7 @@ header {
   margin: 20px auto; 
 }
 
+.matched-inputs,
 .profile-input  input, select {
   padding:20px;
   width: -webkit-fill-available;

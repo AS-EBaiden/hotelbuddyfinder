@@ -10,22 +10,23 @@ export default function Matched({ personInfo, setPersonInfo }) {
   const [contactData, setContacData] = useState([]);
 
   const submitMatch = (e) => {
-    e.preventDefault();
+    console.log("form not enabled");
+    // e.preventDefault();
 
-    if (initialValues === "" || (!contactData.length > 0 && inputValue === ""))
-      return alert("please make sure all fields are filled");
+    // if (initialValues === "" || (!contactData.length > 0 && inputValue === ""))
+    //   return alert("please make sure all fields are filled");
 
-    const newArr = personInfo.slice();
+    // const newArr = personInfo.slice();
 
-    newArr.splice(0, 0, {
-      ...initialValues,
-    });
+    // newArr.splice(0, 0, {
+    //   ...initialValues,
+    // });
 
-    setPersonInfo(newArr);
-    setInitialValues({
-      username: "",
-      username2: "",
-    });
+    // setPersonInfo(newArr);
+    // setInitialValues({
+    //   username: "",
+    //   username2: "",
+    // });
   };
 
   const changeHandler = (e) => {
@@ -35,16 +36,43 @@ export default function Matched({ personInfo, setPersonInfo }) {
 
   return (
     <div>
-      <div>Did you find your match? Fill the form so we can unlist you</div>
-      <div>
-        <form onSubmit={submitMatch}>
-          <label>Your Username</label>
-          <input onChange={changeHandler} username="username" />
+      <div>Did you find your match? Please fill the form below</div>
+      <div
+        style={{
+          minHeight: "25vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <form onSubmit={submitMatch} style={{ display: "inline-flex" }}>
+          <div style={{ padding: "2%" }}>
+            <label>Your Username</label>
+            <input
+              className="matched-inputs"
+              onChange={changeHandler}
+              username="username"
+            />
+          </div>
+          <div style={{ padding: "2%" }}>
+            <label>Your match username</label>
+            <input
+              className="matched-inputs"
+              onChange={changeHandler}
+              username2="username2"
+            />
+          </div>
+          <div>
+            <button
+              style={{
+                position: "relative",
 
-          <label>Your match username</label>
-          <input onChange={changeHandler} username2="username2" />
-
-          <button>I matched</button>
+                top: "2.5rem",
+              }}
+            >
+              I matched
+            </button>
+          </div>
         </form>
       </div>
     </div>

@@ -10,8 +10,8 @@ export default function About() {
           the entirety of the event.
         </p>
         <p>
-          It's expensive keeping this up with many users, so the data will be
-          kept for the month of November 2022, after that, it will self delete.
+          Data will be kept for the month of November 2022, after that, it will
+          self delete.
         </p>
         <p>
           We advise you to vet the person you are connecting with thoroughly

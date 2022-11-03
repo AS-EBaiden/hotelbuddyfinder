@@ -527,7 +527,7 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
               <button
                 className="form-btn"
                 type="submit"
-                style={{ width: "100%", padding: "1%" }}
+                style={{ width: "100%", padding: "1.2rem" }}
                 disabled={errorUser}
               >
                 Send
