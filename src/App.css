@@ -210,7 +210,7 @@ button {
 
 
 .contact_grid {
-grid-column: 1 / 4
+  grid-column: 1 / 4;
 }
 
 .contact_style {
@@ -265,6 +265,11 @@ grid-column: 1 / 4
 
 
 @media only screen and (max-width: 1050px) {
+
+  /* .contact_grid {
+    grid-column: none;
+  } */
+
   .profiles-container {
 grid-template-columns: 1fr 1fr;
 }
@@ -283,7 +288,16 @@ grid-template-columns: 1fr 1fr;
 }
 }
 
+@media only screen and (max-width: 890px) {
+
+  .contact_grid {
+    grid-column: unset;
+  }
+
+}
+
 @media only screen and (max-width: 650px) {
+
   .profiles-container {
 grid-template-columns: 1fr;
 }
