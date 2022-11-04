@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { getDocs, collection, query } from "firebase/firestore";
 import { db } from "./firebase";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import CookieConsent from "react-cookie-consent";
 
 function App() {
   const [personInfo, setPersonInfo] = useState([]);
@@ -67,6 +68,20 @@ function App() {
           <Route />
         </Routes>
       </main>
+      <CookieConsent
+        onAccept={(acceptedByScrolling) => {
+          if (acceptedByScrolling) {
+            // triggered if user scrolls past threshold
+            alert("Accept was triggered by user scrolling");
+          } else {
+            alert(
+              "You've accepted that we use cookies for beter user experience"
+            );
+          }
+        }}
+      >
+        This website uses cookies to enhance the user experience.{" "}
+      </CookieConsent>
     </>
   );
 }
