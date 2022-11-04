@@ -38,7 +38,7 @@ function App() {
           <title>Afro Tech Roomie Finder</title>
           <meta
             name="description"
-            content="Waited too late to find an affordable place for Afro Tech? find a roomate"
+            content="Waited too late to find an affordable place for Afro Tech? Find a roomate"
           />
           <meta
             name="keywords"
