@@ -207,6 +207,18 @@ button {
   transform: rotate(-45deg);
 }
 
+
+
+.contact_grid {
+grid-column: 1 / 4
+}
+
+.contact_style {
+      grid-template-columns: 1fr 1fr;
+      display: grid;
+      gap: 20px;
+}
+
 .ul-list, .social-list {
   list-style-type: none;
   text-align: center;
@@ -252,11 +264,36 @@ button {
 }
 
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media only screen and (max-width: 1050px) {
+  .profiles-container {
+grid-template-columns: 1fr 1fr;
+}
+
+.hero-form-container {
+  margin: 49px 56px;
+}
+
+.profile-input {
+  grid-template-columns: 1fr 1fr;
+}
+
+.contact_style {
+      grid-template-columns: unset;
+  
+}
+}
+
+@media only screen and (max-width: 650px) {
+  .profiles-container {
+grid-template-columns: 1fr;
+}
+
+.hero-form-container {
+  margin: 49px 56px;
+}
+
+.profile-input {
+  grid-template-columns: 1fr ;
+}
+
 }
