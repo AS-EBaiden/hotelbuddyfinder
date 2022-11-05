@@ -11,22 +11,18 @@ export default function Matched({ personInfo, setPersonInfo }) {
 
   const submitMatch = (e) => {
     e.preventDefault();
-    console.log("form not enabled");
 
-    // if (initialValues === "" || (!contactData.length > 0 && inputValue === ""))
-    //   return alert("please make sure all fields are filled");
+    let firstInput = personInfo.map((obj) => {
+      if (obj.username === initialValues.username) {
+        return { ...obj, isMatched: "true" };
+      }
+      if (obj.username === initialValues.username2) {
+        return { ...obj, isMatched: "maybe" };
+      }
+      return obj;
+    });
 
-    // const newArr = personInfo.slice();
-
-    // newArr.splice(0, 0, {
-    //   ...initialValues,
-    // });
-
-    // setPersonInfo(newArr);
-    // setInitialValues({
-    //   username: "",
-    //   username2: "",
-    // });
+    setPersonInfo(firstInput);
   };
 
   const changeHandler = (e) => {
@@ -51,7 +47,7 @@ export default function Matched({ personInfo, setPersonInfo }) {
             <input
               className="matched-inputs"
               onChange={changeHandler}
-              username="username"
+              name="username"
             />
           </div>
           <div style={{ padding: "2%" }}>
@@ -59,7 +55,7 @@ export default function Matched({ personInfo, setPersonInfo }) {
             <input
               className="matched-inputs"
               onChange={changeHandler}
-              username2="username2"
+              name="username2"
             />
           </div>
           <div>
