@@ -261,11 +261,24 @@ button {
   font-size: 2rem;
   color: red;
 }
-
+.match-form {
+  display: inline-flex;
+}
 .match-instructions {
   list-style: auto;
-  padding: 0 7rem;
+  padding: 0 20%;
   text-align: initial;
+}
+
+.match-btn {
+  padding: 20%;
+    background-color: rgb(255, 196, 0);
+    border-radius: 10px;
+    border: none;
+
+    position: relative;
+
+    top: 2rem;
 }
 
 
@@ -324,6 +337,16 @@ grid-template-columns: 1fr;
 
 .profile-input {
   grid-template-columns: 1fr ;
+}
+
+.match-form {
+  display: unset;
+}
+
+.match-btn {
+  padding: 5%;
+    width: 100%;
+    position: unset;
 }
 
 }

@@ -55,7 +55,7 @@ export default function Matched({ personInfo, setPersonInfo }) {
           alignItems: "center",
         }}
       >
-        <form onSubmit={submitMatch} style={{ display: "inline-flex" }}>
+        <form onSubmit={submitMatch} className="match-form">
           <div style={{ padding: "2%" }}>
             <label>Your Username</label>
             <input
@@ -75,16 +75,7 @@ export default function Matched({ personInfo, setPersonInfo }) {
             />
           </div>
           <div>
-            <button
-              className="form-btn"
-              style={{
-                position: "relative",
-
-                top: "2.5rem",
-              }}
-            >
-              I matched
-            </button>
+            <button className="match-btn">I matched</button>
           </div>
         </form>
       </div>
