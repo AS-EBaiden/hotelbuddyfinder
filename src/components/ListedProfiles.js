@@ -26,24 +26,22 @@ export default function ListedProfiles({ personInfo, wordContain2 }) {
               {ppl.name}{" "}
               <em style={{ fontSize: "1.2rem" }}>({ppl.username})</em>
             </h2>
-            {ppl.isMatched === "true" && (
-              <span
-                style={{ color: "hsl(288deg 78% 12%)", fontWeight: "bold" }}
-              >
-                MATCHED
-              </span>
-            )}
-
-            {ppl.isMatched === "maybe" && (
-              <span
-                style={{ color: "hsl(288deg 78% 12%)", fontWeight: "bold" }}
-              >
-                Nominated as Matched
-              </span>
-            )}
             <h4>{ppl.pronouns}</h4>
-
-            <h4>{ppl.isHosting ? "hosting" : "looking"} </h4>
+            {ppl.isMatched === "false" ? (
+              <h4> {ppl.isHosting ? "hosting" : "looking"}</h4>
+            ) : (
+              ""
+            )}{" "}
+            {ppl.isMatched === "true" && (
+              <h4 style={{ color: "hsl(288deg 78% 12%)", fontWeight: "bold" }}>
+                MATCHED
+              </h4>
+            )}
+            {ppl.isMatched === "maybe" && (
+              <h4 style={{ color: "hsl(288deg 78% 12%)", fontWeight: "bold" }}>
+                Nominated as Matched
+              </h4>
+            )}
             <div>
               <img
                 style={{ width: "128px", height: "128px", objectFit: "cover" }}
@@ -58,11 +56,6 @@ export default function ListedProfiles({ personInfo, wordContain2 }) {
               <ul className="social-list">
                 {ppl.contact.map((item, j) => (
                   <li key={j}>
-                    {/* <a href="#" className="fa fa-twitter"></a>
-                    {item} */}
-                    {/* <a href={item} target="_blank">
-                      {wordContain2(item)}
-                    </a> */}
                     <a
                       href={
                         item.includes("@")

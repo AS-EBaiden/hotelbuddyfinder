@@ -390,26 +390,14 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
                 return (
                   <React.Fragment key={i}>
                     {r === "contact" ? (
-                      <div
-                        className="contact_grid"
-                        // style={{ gridColumn: "1 / 4" }}
-                      >
-                        <div
-                          className="contact_style"
-                          // style={{
-                          //   gridTemplateColumns: "1fr 1fr",
-                          //   display: "grid",
-                          //   gap: "20px",
-                          // }}
-                        >
+                      <div className="contact_grid">
+                        <div className="contact_style">
                           <div
                             className="contact-grid"
                             style={{
                               display: "grid",
                               gridTemplateColumns: "4fr 1fr",
-                              // gridTemplateColumns: " 5fr 1fr",
                               gap: "20px",
-                              // margin: "20px auto",
                             }}
                           >
                             <div>
