@@ -14,10 +14,15 @@ export default function Matched({ personInfo, setPersonInfo }) {
 
     let firstInput = personInfo.map((obj) => {
       if (obj.username === initialValues.username) {
+        if (obj.isMatched === "true") return;
         return { ...obj, isMatched: "true" };
       }
-      if (obj.username === initialValues.username2) {
-        return { ...obj, isMatched: "maybe" };
+      if (initialValues.username2 !== "") {
+        if (obj.username === initialValues.username2) {
+          if (obj.isMatched === "true") return;
+          return { ...obj, isMatched: "maybe" };
+        }
+        // return { ...obj, isMatched: "maybe" };
       }
       return obj;
     });
@@ -33,6 +38,15 @@ export default function Matched({ personInfo, setPersonInfo }) {
   return (
     <div>
       <div>Did you find your match? Please fill the form below</div>
+      <ul className="match-instructions">
+        <li>
+          if you know your match's username please enter in the second field
+        </li>
+        <li>
+          if your match has nominated you please fill your username in the first
+          field to confirm your match
+        </li>
+      </ul>
       <div
         style={{
           minHeight: "25vh",
@@ -45,6 +59,7 @@ export default function Matched({ personInfo, setPersonInfo }) {
           <div style={{ padding: "2%" }}>
             <label>Your Username</label>
             <input
+              placeholder="your username"
               className="matched-inputs"
               onChange={changeHandler}
               name="username"
@@ -53,6 +68,7 @@ export default function Matched({ personInfo, setPersonInfo }) {
           <div style={{ padding: "2%" }}>
             <label>Your roomate username</label>
             <input
+              placeholder="roomate's username"
               className="matched-inputs"
               onChange={changeHandler}
               name="username2"
@@ -60,6 +76,7 @@ export default function Matched({ personInfo, setPersonInfo }) {
           </div>
           <div>
             <button
+              className="form-btn"
               style={{
                 position: "relative",
 

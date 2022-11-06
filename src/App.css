@@ -93,10 +93,10 @@ nav a {
   color: white;
   text-decoration: none;
 }
-ul, li {
+/* nav ul, li {
   padding: 0;
   list-style-type: none;
-}
+} */
 h1,h2,h3 {
   /* color: #394447 */
 }
@@ -243,6 +243,16 @@ button {
   margin: 20px
 }
 
+.isMatched {
+  opacity: .4;
+  filter: grayscale(var(--value, 67%));
+}
+
+.almostMatched {
+  opacity: .75;
+  filter: grayscale(var(--value, 67%));
+}
+
 .about-content {
   font-size: 1.5rem;
 }
@@ -250,6 +260,12 @@ button {
 .warning {
   font-size: 2rem;
   color: red;
+}
+
+.match-instructions {
+  list-style: auto;
+  padding: 0 7rem;
+  text-align: initial;
 }
 
 
