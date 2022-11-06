@@ -7,7 +7,13 @@ export default function ListedProfiles({ personInfo, wordContain2 }) {
         {personInfo.map((ppl, i) => (
           <article
             key={i}
-            className="profile-card"
+            className={`profile-card ${
+              ppl.isMatched === "true"
+                ? "isMatched"
+                : ppl.isMatched === "maybe"
+                ? "almostMatched"
+                : ""
+            }`}
             style={{
               maxHeight: "600px",
               borderRadius: "10px",
@@ -20,6 +26,21 @@ export default function ListedProfiles({ personInfo, wordContain2 }) {
               {ppl.name}{" "}
               <em style={{ fontSize: "1.2rem" }}>({ppl.username})</em>
             </h2>
+            {ppl.isMatched === "true" && (
+              <span
+                style={{ color: "hsl(288deg 78% 12%)", fontWeight: "bold" }}
+              >
+                MATCHED
+              </span>
+            )}
+
+            {ppl.isMatched === "maybe" && (
+              <span
+                style={{ color: "hsl(288deg 78% 12%)", fontWeight: "bold" }}
+              >
+                Nominated as Matched
+              </span>
+            )}
             <h4>{ppl.pronouns}</h4>
 
             <h4>{ppl.isHosting ? "hosting" : "looking"} </h4>
