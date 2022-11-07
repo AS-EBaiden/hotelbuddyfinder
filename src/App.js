@@ -8,7 +8,13 @@ import { users } from "./api/fakeprofiles";
 import About from "./views/About";
 import Matched from "./views/Matched";
 import { useEffect } from "react";
-import { getDocs, collection, query } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  query,
+  doc,
+  onSnapshot,
+} from "firebase/firestore";
 import { db } from "./firebase";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import CookieConsent from "react-cookie-consent";
@@ -18,19 +24,37 @@ function App() {
 
   const helmetContext = {};
   useEffect(() => {
-    const fetchData = async () => {
-      let list = [];
-      try {
-        const querySnapshot = await getDocs(collection(db, "users"));
-        querySnapshot.forEach((doc) => {
-          list.push({ id: doc.data(), ...doc.data() });
+    // const fetchData = async () => {
+    //   let list = [];
+    //   try {
+    //     const querySnapshot = await getDocs(collection(db, "users"));
+    //     querySnapshot.forEach((doc) => {
+    //       list.push({ id: doc.data(), ...doc.data() });
+    //     });
+    //     setPersonInfo(list);
+    //   } catch (err) {
+    //     console.log("err", err);
+    //   }
+    // };
+    // fetchData();
+
+    const unsub = onSnapshot(
+      collection(db, "users"),
+      (snapshot) => {
+        let list = [];
+        snapshot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() });
         });
         setPersonInfo(list);
-      } catch (err) {
-        console.log("err", err);
+      },
+      (err) => {
+        console.log(err);
       }
+    );
+    //memory leak clean up function
+    return () => {
+      unsub();
     };
-    fetchData();
   }, []);
   return (
     <>
