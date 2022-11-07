@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import React, { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
 import { db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
@@ -17,92 +17,17 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   const [selectOption, setSelectOption] = useState(false);
   const [submissionSucces, setSubmissionSuccess] = useState(false);
   const [errorUser, setErrorUser] = useState(false);
-  const [areInputsEmpty, setAreImputsEmpty] = useState(null);
   const [file, setFile] = useState("");
-
-  // useEffect(() => {
-  //   setInitialValues((prev) => ({ ...prev, img: file.name }));
-  // }, [file]);
-
-  // useEffect(() => {
-  //   const uploadFile = () => {
-  //     const uniqname = new Date().getTime() + initialValues.username;
-  //     console.log(uniqname);
-  //     // const storageRef = ref(storage, initialValues.username ?? uniqname);
-  //     const storageRef = storage().ref(file.name);
-
-  //     const uploadTask = uploadBytesResumable(storageRef, file);
-
-  //     // Register three observers:
-  //     // 1. 'state_changed' observer, called any time the state changes
-  //     // 2. Error observer, called on failure
-  //     // 3. Completion observer, called on successful completion
-  //     uploadTask.on(
-  //       "state_changed",
-  //       (snapshot) => {
-  //         // Observe state change events such as progress, pause, and resume
-  //         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-  //         const progress =
-  //           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-  //         console.log("Upload is " + progress + "% done");
-  //         switch (snapshot.state) {
-  //           case "paused":
-  //             console.log("Upload is paused");
-  //             break;
-  //           case "running":
-  //             console.log("Upload is running");
-  //             break;
-  //           default:
-  //             break;
-  //         }
-  //       },
-  //       (error) => {
-  //         // Handle unsuccessful uploads
-  //         console.log("error", error);
-  //       },
-  //       () => {
-  //         // Handle successful uploads on complete
-  //         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-  //         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-  //           setInitialValues((prev) => ({ ...prev, img: downloadURL }));
-  //         });
-  //       }
-  //     );
-  //   };
-  //   console.log("file", file);
-  //   file && uploadFile();
-  // }, [file]);
-
-  // const addPerson = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const res = await setDoc(doc(db, "users", res.user.uid), {
-  //       ...personInfo,
-  //     });
-  //     console.log("res", res);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   const testfunction = async () => {
     await console.log("waiting for job to be done");
   };
-  // console.log("file", file);
 
   const addPerson = async (e) => {
     e.preventDefault();
-    // const file = e.target[0]?.files[0]
-    console.log("content", contactData.length);
 
     const newArr = personInfo.slice();
 
-    // newArr.splice(0, 0, {
-    //   ...initialValues,
-    //   isHosting: selectOption,
-    //   contact:
-    //     contactData.length > 1 ? contactData : [...contactData, inputValue],
-    // });
     if (
       initialValues === "" ||
       initialValues.name === "" ||
@@ -186,16 +111,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
       }
     );
 
-    // const newArr = personInfo.slice();
-
-    // newArr.splice(0, 0, {
-    //   ...initialValues,
-    //   isHosting: selectOption,
-    //   img: downloadURL,
-    //   contact:
-    //     contactData.length > 1 ? contactData : [...contactData, inputValue],
-    // });
-
     const user = {
       ...initialValues,
       isHosting: selectOption,
@@ -203,93 +118,8 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
         contactData.length > 1 ? contactData : [...contactData, inputValue],
     };
 
-    // try {
-    //   const res = await addDoc(collection(db, "users"), user);
-    //   console.log("res", res);
-    //   console.log("user", user);
-    // } catch (err) {
-    //   console.log(err);
-    // }
-
-    // setPersonInfo(newArr);
-
     await testfunction();
   };
-
-  // console.log("initial", initialValues);
-
-  // const addPerson = async (e) => {
-  //   e.preventDefault();
-
-  //   if (initialValues === "" || (!contactData.length > 0 && inputValue === ""))
-  //     return alert("please make sure all fields are filled");
-
-  //   const newArr = personInfo.slice();
-
-  //   newArr.splice(0, 0, {
-  //     ...initialValues,
-  //     isHosting: selectOption,
-  //     contact:
-  //       contactData.length > 1 ? contactData : [...contactData, inputValue],
-  //   });
-
-  //   // try {
-  //   //   const res = await addDoc(collection(db, "users"), {
-  //   //     ...newArr,
-  //   //   });
-  //   //   console.log("res", res);
-  //   // } catch (err) {
-  //   //   console.log(err);
-  //   // }
-
-  //   setPersonInfo(newArr);
-  // };
-
-  // const addPerson = async (e) => {
-  //   e.preventDefault();
-  //   console.log("printed");
-  //   try {
-  //     const res = await addDoc(collection(db, "cities"), {
-  //       name: "Los Angeles",
-  //       state: "CA",
-  //       country: "USA",
-  //     });
-  //     console.log("res", res);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // const addPerson = () => {
-  //   setSubmissionSuccess(true);
-  // };
-  // const addPerson = async (e) => {
-  //   e.preventDefault();
-
-  //   if (initialValues === "" || (!contactData.length > 0 && inputValue === ""))
-  //     return alert("please make sure all fields are filled");
-
-  //   const newArr = personInfo.slice();
-
-  //   newArr.splice(0, 0, {
-  //     ...initialValues,
-  //     isHosting: selectOption,
-  //     contact:
-  //       contactData.length > 1 ? contactData : [...contactData, inputValue],
-  //   });
-
-  //   setPersonInfo(newArr);
-
-  //   setInitialValues({
-  //     name: "",
-  //     username: "",
-  //     pronouns: "",
-  //     isHosting: false,
-  //     isMatched: false,
-  //     contact: [],
-  //   });
-  //   setInputValue("");
-  // };
 
   const addContact = (e) => {
     e.preventDefault();
@@ -306,8 +136,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
         ? personInfo.some((prs) => prs.username === e.target.value)
         : "";
     setErrorUser(isExisting);
-    // console.log("initial val", [e.target.name]);
-    setAreImputsEmpty(initialValues[e.target.name] === "");
     setInitialValues({ ...initialValues, [e.target.name]: e.target.value });
   };
 
@@ -325,46 +153,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
     setContacData(filteredItems);
   };
 
-  const isitdone = (e) => {
-    e.preventDefault();
-    console.log("is it working", contactData.length === 0 && inputValue === "");
-  };
-
-  // const wordContain2 = (str) => {
-  //   switch (true) {
-  //     case str.includes("twitter"):
-  //       return (
-  //         <>
-  //           <i className="fa fa-twitter" style={{ padding: "5px" }}></i>
-  //           {str == "twitter" || str == "twitter.com"
-  //             ? ""
-  //             : str.split("twitter.com/")[1].split("/")[0]}
-  //         </>
-  //       );
-  //     case str.includes("instagram"):
-  //       return (
-  //         <>
-  //           <i className="fa fa-instagram" style={{ padding: "5px" }}></i>
-  //           {str == "instagram" || str == "instagram.com"
-  //             ? ""
-  //             : str.split("instagram.com/")[1].split("/")[0]}
-  //         </>
-  //       );
-  //     case str.includes("@"):
-  //       return (
-  //         <>
-  //           <i className="fa fa-envelope" style={{ padding: "5px" }}></i>
-  //           {str}
-  //         </>
-  //       );
-  //     default:
-  //       return str;
-  //   }
-  // };
-
-  // console.log("init val after everything", initialValues);
-  // console.log("person data", personInfo);
-
   return (
     <div
       style={{
@@ -373,7 +161,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
       }}
     >
       {submissionSucces ? (
-        // <div className="successSubmission">Success</div>
         <div>
           <h3 style={{ fontSize: "2.5rem", color: "#77bd7d" }}>Success!!</h3>
           <h3>
@@ -385,7 +172,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
           <h2>Put your info here</h2>
           <form onSubmit={addPerson} className="hero-form-container">
             <div className="profile-input">
-              {/* <div className="input-container"> */}
               {Object.keys(initialValues)?.map((r, i) => {
                 return (
                   <React.Fragment key={i}>
@@ -428,8 +214,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
                             style={{
                               display: "inline-flex",
                               flexFlow: "wrap",
-                              // display: "grid",
-                              // gridTemplateColumns: "repeat(3, 1fr)",
                             }}
                           >
                             {contactData?.map((item, j) => (
@@ -441,39 +225,19 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
                                 }}
                               >
                                 <div style={{ padding: "0 10px" }}>
-                                  {/* {item.includes("twitter") ? (
-                                    <>
-                                      <i className="fa fa-twitter"></i>
-                                      {wordContain(item)}
-                                    </>
-                                  ) : (
-                                    "heh"
-                                  )} */}
                                   {wordContain2(item)}
                                 </div>
 
-                                {/* <span> */}
                                 <a
                                   href="#"
                                   aria-label="Close"
                                   className="close"
                                   onClick={(e) => removeContact(e, j)}
                                 />
-                                {/* </span> */}
                               </div>
                             ))}
                           </div>
                         </div>
-                        {/* <div>
-                          {contactData?.map((item, j) => (
-                            <div key={j}>
-                              <div>{item}</div>
-                              <span>
-                                <button>🗑️</button>
-                              </span>
-                            </div>
-                          ))}
-                        </div> */}
                       </div>
                     ) : r === "isHosting" ? (
                       <div>

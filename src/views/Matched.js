@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { doc, setDoc } from "firebase/firestore";
-import { db, storage } from "../firebase";
+import { db } from "../firebase";
 export default function Matched({ personInfo, setPersonInfo }) {
   const [initialValues, setInitialValues] = useState({
     username: "",
