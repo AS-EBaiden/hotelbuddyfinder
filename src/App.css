@@ -21,6 +21,8 @@ html {
 }
 body {
   color: white;
+  min-height: 100vh !important;
+
 
   /* margin: 20px; */
   font-family: "Poppins";

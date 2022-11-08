@@ -19,10 +19,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
   const [errorUser, setErrorUser] = useState(false);
   const [file, setFile] = useState("");
 
-  const testfunction = async () => {
-    await console.log("waiting for job to be done");
-  };
-
   const addPerson = async (e) => {
     e.preventDefault();
 
@@ -117,8 +113,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
       contact:
         contactData.length > 1 ? contactData : [...contactData, inputValue],
     };
-
-    await testfunction();
   };
 
   const addContact = (e) => {
@@ -292,7 +286,6 @@ export default function InputInfo({ personInfo, setPersonInfo, wordContain2 }) {
               })}
 
               {/* reference: https://codesandbox.io/s/elastic-wave-36ous?fontsize=14&hidenavigation=1&theme=dark&file=/src/App.js:847-854 */}
-              {/* </div>// */}
             </div>
             {/* add ability to add multiple inputs sets */}
 
